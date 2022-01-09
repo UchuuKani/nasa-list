@@ -6,7 +6,7 @@ import styles from "../styles/Home.module.scss";
 // components
 import ListContainer from "../src/components/ListContainer";
 
-const Home: NextPage = () => {
+const App: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
@@ -16,6 +16,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
+        <h1>Discover the cosmos!</h1>
         <ListContainer />
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
@@ -73,4 +74,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default App;
