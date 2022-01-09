@@ -7,6 +7,12 @@ interface ListContainerProps {
 
 const ListContainer: React.FC<ListContainerProps> = ({ test }) => {
   const [nasaImages, setNasaImages] = useState<any[]>([]);
+  // useLocalCache for maintaining likes in state, and also persisting in localStorage when an image is liked or unliked
+  const {
+    cachedLikes,
+    addLike: addToLikeList,
+    removeLike: removeFromLikeList,
+  } = useLocalCache();
   const nasaKey = process.env.NEXT_PUBLIC_NASA_KEY;
 
   const fetchNasa = async () => {
