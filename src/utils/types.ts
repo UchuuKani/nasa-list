@@ -8,9 +8,7 @@ export interface ImageData {
   copyright?: string;
 }
 
-export interface LikeStatus {
-  liked: "LIKED" | "NOT_LIKED";
-}
+export type DisplayList = "LIKES" | "RANDOM" | "NONE";
 
 // opting for array instead of object for ease of key removal
 // as an array, adding or removing a key will be a linear operation, so if cache becomes large enough could become slow and might need to use object
