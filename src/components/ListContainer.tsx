@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import CardList from "./CardList";
 import useLocalCache from "../hooks/useLocalCache";
+import { ImageData } from "../utils/types";
 
 const ListContainer: React.FC = () => {
-  const [nasaImages, setNasaImages] = useState<any[]>([]);
+  const [nasaImages, setNasaImages] = useState<ImageData[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [fetchError, setFetchError] = useState("");
   // useLocalCache for maintaining likes in state, and also persisting in localStorage when an image is liked or unliked
@@ -80,11 +81,11 @@ const ListContainer: React.FC = () => {
           likedImages={cachedLikes}
         />
       )}
-      {/* want to ensure that if there is data,  */}
-      {isLoading && (
-        //   && nasaImages.length === 0
-        <div>Loading images</div>
-      )}
+      {/* display loading screen if data has not returned, and if there is no error - can 
+          be sure that isLoading is false after fetch completes due to .finally block -
+          should not need to check that nasaImages.length === 0   
+      */}
+      {isLoading && <div>Loading images</div>}
     </div>
   );
 };
