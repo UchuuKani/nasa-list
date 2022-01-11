@@ -21,9 +21,9 @@ const Card: React.FC<CardProps> = ({
       {/* not choosing a <figure> element to wrpa img tags bc a figure should relate to main content of a page. These images are the main content */}
       <div style={{ width: "100%" }}>
         {/* possible to have an image url returned, display the image (imgData.media_type === "image") */}
-        {imgData.hdurl && imgData.media_type === "image" && (
+        {imgData.url && imgData.media_type === "image" && (
           <img
-            src={imgData.hdurl}
+            src={imgData.url}
             alt={imgData.explanation || imgData.title || ""}
             style={{
               width: "100%",
