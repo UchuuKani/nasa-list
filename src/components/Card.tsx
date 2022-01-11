@@ -58,7 +58,7 @@ const Card: React.FC<CardProps> = ({
           likeImage(imgData.date);
         }}
       >
-        <FontAwesomeIcon icon={faHeart} />
+        <FontAwesomeIcon icon={faHeart} size="lg" />
       </button>
     </article>
   );
