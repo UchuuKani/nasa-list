@@ -13,7 +13,7 @@ import { render, screen } from '@testing-library/react'
 import App from '../pages/index'
 
 describe('The Nasa List', () => {
-  it('renders a heading', () => {
+  it('renders a heading with text "Discover the cosmos!"', () => {
     render(<App />)
 
     const heading = screen.getByRole('heading', {
