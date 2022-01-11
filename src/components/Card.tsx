@@ -1,6 +1,8 @@
 import React from "react";
 import { ImageData } from "../utils/types";
 import { LikeActions } from "../utils/types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 interface CardProps extends LikeActions {
   imgData: ImageData;
@@ -56,7 +58,7 @@ const Card: React.FC<CardProps> = ({
           likeImage(imgData.date);
         }}
       >
-        <i className="fas fa-heart"></i>
+        <FontAwesomeIcon icon={faHeart} />
       </button>
     </article>
   );
