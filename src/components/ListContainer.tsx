@@ -71,7 +71,9 @@ const ListContainer: React.FC = () => {
       {fetchError && (
         <figure>
           {fetchError}
-          <button onClick={fetchNasa}>Try again</button>
+          <button className="retry-btn" onClick={fetchNasa}>
+            Try again
+          </button>
         </figure>
       )}
       {!fetchError && nasaImages.length > 0 && (
