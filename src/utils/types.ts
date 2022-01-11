@@ -11,9 +11,9 @@ export interface ImageData {
 export type DisplayList = "LIKES" | "RANDOM" | "NONE";
 
 // opting for array instead of object for ease of key removal
-// as an array, adding or removing a key will be a linear operation, so if cache becomes large enough could become slow and might need to use object
+// as an array, adding or removing a key will be a linear operation, so if store becomes large enough could become slow and might need to use object
 // for faster lookup (and deletion? Not positive about speed of removing a key from an object)
-export type LikesCache = string[];
+export type LikesStore = string[];
 
 export interface LikeActions {
   likeImage: (url: string) => void;

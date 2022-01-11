@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CardList from "./CardList";
-import useLocalCache from "../hooks/useLocalCache";
+import useLocalStorage from "../hooks/useLocalStorage";
 import { ImageData } from "../utils/types";
 import { nasaKey } from "../utils/helpers";
 
@@ -10,22 +10,14 @@ const ListContainer: React.FC = () => {
   const [nasaImages, setNasaImages] = useState<ImageData[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [fetchError, setFetchError] = useState("");
-  // useLocalCache for maintaining likes in state, and also persisting in localStorage when an image is liked or unliked
+  // useLocalStorage for maintaining likes in state, and also persisting in localStorage when an image is liked or unliked
   const {
-    cachedLikes,
+    storedLikes,
     addLike: addToLikeList,
     removeLike: removeFromLikeList,
-  } = useLocalCache();
+  } = useLocalStorage();
   // can set state for loading, and error states - would maybe want to avoid if possible since don't want to work with tons of booleans
   // to derive state, and maybe opt to use a state machine like XState. For simple use case, opting to just use useState to handle
-  // loading and error states
-  // loading is boolean, true | false
-  // fetchError will be a string, empty to indicate no error and non-empty to indicate there was an error loading images
-
-  // in the case of an error, probably also want logic to retry, with a button
-
-  // if the api key was being used elsewhere, would maybe put this in a constants file. As it's only being used in one place, keeping it in this file
-  const nasaKey = process.env.NEXT_PUBLIC_NASA_KEY;
 
   const fetchNasa = async () => {
     setFetchError("");
@@ -50,7 +42,7 @@ const ListContainer: React.FC = () => {
         });
 
       console.log("we have data houston", data);
-      // want to support this later to show that localStorage cache works without adding the date range picker functionality
+      // want to support this later to show that localStorage store works without adding the date range picker functionality
       // if we fetch from api and only provide key, latest image is fetched. The latest image object has the same shape
       // as an individual element of the array returned by api call if we supplied it a "count" parameter
       if (!Array.isArray(data)) data = [data];
@@ -83,7 +75,7 @@ const ListContainer: React.FC = () => {
           imgDataList={nasaImages}
           likeImage={addToLikeList}
           removeLike={removeFromLikeList}
-          likedImages={cachedLikes}
+          likedImages={storedLikes}
         />
       )}
       {/* display loading screen if data has not returned, and if there is no error - can 

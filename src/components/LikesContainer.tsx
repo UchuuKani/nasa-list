@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CardList from "./CardList";
-import useLocalCache from "../hooks/useLocalCache";
+import useLocalStorage from "../hooks/useLocalStorage";
 import { ImageData } from "../utils/types";
 import { nasaKey, mapFailedResponseToDate } from "../utils/helpers";
 
@@ -10,12 +10,12 @@ const LikesContainer: React.FC = () => {
   const [nasaImages, setNasaImages] = useState<ImageData[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [failedDates, setFailedDates] = useState<string[]>([]);
-  // useLocalCache for maintaining likes in state, and also persisting in localStorage when an image is liked or unliked
+  // useLocalStorage for maintaining likes in state, and also persisting in localStorage when an image is liked or unliked
   const {
-    cachedLikes,
+    storedLikes,
     addLike: addToLikeList,
     removeLike: removeFromLikeList,
-  } = useLocalCache();
+  } = useLocalStorage();
 
   const fetchNasaLikes = async () => {
     setFailedDates([]);
@@ -23,7 +23,7 @@ const LikesContainer: React.FC = () => {
 
     try {
       let data = await Promise.allSettled<ImageData>(
-        cachedLikes.map((imgDate) => {
+        storedLikes.map((imgDate) => {
           return fetch(
             `https://api.nasa.gov/planetary/apod?api_key=${nasaKey}&date=${imgDate}`
           ).then(async (res) => {
@@ -37,8 +37,8 @@ const LikesContainer: React.FC = () => {
         })
       );
       // this method for retriving likes probably would not scale well bc we are making X number
-      // of api calls for every like in the cache, but more so using this as a way to demonstrate
-      // local cache of likes works when page is reloaded
+      // of api calls for every like in localStorage, but more so using this as a way to demonstrate
+      // local store of likes works when page is reloaded
       const mappedData: any = data
         .map<ImageData | undefined>((likeObj) => {
           if (likeObj.status === "fulfilled") {
@@ -50,7 +50,7 @@ const LikesContainer: React.FC = () => {
           if (likeObj) return true;
           return false;
         });
-      const failedFetchDates = mapFailedResponseToDate(cachedLikes, data);
+      const failedFetchDates = mapFailedResponseToDate(storedLikes, data);
       console.log("we have data houston", data);
       console.log("and also mappedData", mappedData);
       console.log(
@@ -92,7 +92,7 @@ const LikesContainer: React.FC = () => {
           imgDataList={nasaImages}
           likeImage={addToLikeList}
           removeLike={removeFromLikeList}
-          likedImages={cachedLikes}
+          likedImages={storedLikes}
         />
       )}
       {/* display loading screen if data has not returned, and if there is no error - can

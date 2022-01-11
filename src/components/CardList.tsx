@@ -1,10 +1,10 @@
 import React from "react";
 import Card from "./Card";
-import { LikesCache, LikeActions, ImageData } from "../utils/types";
+import { LikesStore, LikeActions, ImageData } from "../utils/types";
 
 interface CardListProps extends LikeActions {
   imgDataList: ImageData[];
-  likedImages: LikesCache;
+  likedImages: LikesStore;
 }
 
 const CardList: React.FC<CardListProps> = ({
@@ -20,7 +20,7 @@ const CardList: React.FC<CardListProps> = ({
         // NOTE: when testing the api, noted that it was possible for a url and hdurl to be missing, so
         // prefer to use "date" as unique key (assume "date" should always exist for a "picture of the day")
 
-        // prefer to pass in the like status for each card, rather than the whole cache of likes and determining in the Card if the image is Liked
+        // prefer to pass in the like status for each card, rather than the whole store of likes and determining in the Card if the image is Liked
         // so pass in some prop like "likeStatus"
         return (
           <li key={imgData.date}>

@@ -3,15 +3,15 @@ import { ImageData } from "./types";
 export const nasaKey = process.env.NEXT_PUBLIC_NASA_KEY;
 
 export function mapFailedResponseToDate(
-  cacheArr: string[],
+  storedArr: string[],
   failureArr: PromiseSettledResult<ImageData>[]
 ): string[] {
-  if (cacheArr.length !== failureArr.length) return [];
+  if (storedArr.length !== failureArr.length) return [];
   const result = [];
 
-  for (let i = 0; i < cacheArr.length; i++) {
+  for (let i = 0; i < storedArr.length; i++) {
     if (failureArr[i].status === "rejected") {
-      result.push(cacheArr[i]);
+      result.push(storedArr[i]);
     }
   }
 
@@ -28,7 +28,7 @@ export function mockTenCountCall(shouldError?: boolean) {
   });
 }
 
-const fakeTenCount = [
+export const fakeTenCount = [
   {
     date: "2017-04-21",
     explanation:
