@@ -155,3 +155,27 @@ li {
     padding: 8px 32px;
   }
 }
+
+.expando-container {
+  padding-left: 8px;
+  padding-right: 8px;
+
+  & summary {
+    font-weight: bold;
+
+    /*
+    // by setting "list-style: none", would like to try to remove default summary triangle to be able to 1.) add a custom element before 2.) animate the new custom element
+    list-style: none;
+
+    // later, would like to add custom ::before element here, and animate it
+    &::before {
+      content: ">";
+      font: normal normal normal 14px/1 FontAwesome;
+    }
+    */
+  }
+
+  & p {
+    font-size: 1rem;
+  }
+}

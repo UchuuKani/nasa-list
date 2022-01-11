@@ -42,8 +42,16 @@ const Card: React.FC<CardProps> = ({
         )}
       </div>
       <h2>{imgData.title || `A nice space ${imgData.media_type}`}</h2>
-      <p>{imgData.date || ""}</p>
+      {/* only display date if it is available - safe to assume a date would always come back in the request for each image? */}
+      {imgData.date && <p>{imgData.date}</p>}
+      {/* display copyright info if available */}
       {imgData.copyright && <p>Copyright: {imgData.copyright}</p>}
+      {/* "Details" element to have the option to see image's explanation */}
+      <details className="expando-container">
+        <summary>Details</summary>
+        <p>{imgData.explanation}</p>
+      </details>
+      {/* like button using font awesome */}
       <button
         aria-label="like"
         style={{
