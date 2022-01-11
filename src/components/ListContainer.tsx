@@ -4,6 +4,8 @@ import useLocalCache from "../hooks/useLocalCache";
 import { ImageData } from "../utils/types";
 import { nasaKey } from "../utils/helpers";
 
+import LoadingSpinner from "./LoadingSpinner";
+
 const ListContainer: React.FC = () => {
   const [nasaImages, setNasaImages] = useState<ImageData[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -88,7 +90,7 @@ const ListContainer: React.FC = () => {
           be sure that isLoading is false after fetch completes due to .finally block -
           should not need to check that nasaImages.length === 0   
       */}
-      {isLoading && <div>Loading images</div>}
+      {isLoading && <LoadingSpinner />}
     </div>
   );
 };
