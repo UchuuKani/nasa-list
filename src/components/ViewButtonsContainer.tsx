@@ -19,7 +19,7 @@ const ViewButtonsContainer: React.FC<ViewButtonContainerProps> = ({
           <button className="view-btn" onClick={randomSetter}>
             See 10 random images!
           </button>
-
+          OR
           <button className="view-btn" onClick={likesSetter}>
             See your likes!
           </button>

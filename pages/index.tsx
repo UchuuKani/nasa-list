@@ -25,9 +25,10 @@ const App: NextPage = () => {
         <title>Nasa List</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <main className={styles.main}>
+      <header>
         <h1>Discover the cosmos!</h1>
+      </header>
+      <main className={styles.main}>
         <ViewButtonsContainer
           viewStatus={listView}
           likesSetter={setLikesView}

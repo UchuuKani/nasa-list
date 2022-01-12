@@ -67,6 +67,25 @@ h6 {
   application styles
 */
 
+header {
+  text-align: center;
+  padding: 16px;
+  color: white;
+  background: $button-blue;
+  border: 8px solid $nasa-red;
+
+  h1 {
+    font-size: 24px;
+  }
+
+  @media screen and (min-width: $tablet) {
+    // font-size: 32px;
+    h1 {
+      font-size: 32px;
+    }
+  }
+}
+
 .img-card {
   border: solid 1px grey;
   border-radius: 4px;
@@ -115,6 +134,10 @@ li {
   justify-content: center;
   align-items: center;
 
+  @media screen and (min-width: $tablet) {
+    flex-direction: row;
+  }
+
   & .view-btn {
     display: block;
     padding: 8px;
@@ -122,6 +145,10 @@ li {
     min-width: fit-content;
     border-radius: 4px;
     cursor: pointer;
+    background: $button-blue;
+    color: white;
+    font-weight: bold;
+    border: none;
   }
 }
 
@@ -148,6 +175,10 @@ li {
   width: 100%;
   border-radius: 4px;
   cursor: pointer;
+  background-color: $button-blue;
+  color: white;
+  font-weight: bold;
+  border: none;
 
   @media screen and (min-width: $mobile) {
     max-width: fit-content;
