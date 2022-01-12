@@ -1,4 +1,5 @@
 import { DisplayList } from "../utils/types";
+import PropTypes from "prop-types";
 
 interface ViewButtonContainerProps {
   randomSetter: () => void;
@@ -36,6 +37,13 @@ const ViewButtonsContainer: React.FC<ViewButtonContainerProps> = ({
       )}
     </div>
   );
+};
+
+ViewButtonsContainer.propTypes = {
+  viewStatus: PropTypes.oneOf<DisplayList>(["LIKES", "RANDOM", "NONE"])
+    .isRequired,
+  likesSetter: PropTypes.func.isRequired,
+  randomSetter: PropTypes.func.isRequired,
 };
 
 export default ViewButtonsContainer;
