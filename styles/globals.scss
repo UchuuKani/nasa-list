@@ -217,8 +217,12 @@ ul .card-list-item {
     */
   }
 
-  & p {
+  & .explanation {
     font-size: 1rem;
+    max-height: 400px;
+    overflow-y: auto;
+    background-color: $background-grey;
+    border-radius: 2px;
   }
 
   & .copyright {
