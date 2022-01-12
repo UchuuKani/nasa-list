@@ -21,6 +21,8 @@ const LikesContainer: React.FC = () => {
     setFailedDates([]);
     setIsLoading(true);
 
+    // not strictly necessary to prevent fetch call if no storedLikes because network request is not made
+    // when calling Promise.allSettled with an empty array
     try {
       let data = await Promise.allSettled<ImageData>(
         storedLikes.map((imgDate) => {
@@ -87,6 +89,20 @@ const LikesContainer: React.FC = () => {
           </button>
         </p>
       )}
+      {/* if no likes, indicate as such - prefer checking for presence of storedLikes instead of nasaLikes
+          because nasaLikes will be empty and isLoading will be false on first render (nasaLikes could potentially be set to a non-empty array later)
+          storedLikes should be empty and stay empty on first render, and on subsequent renders while
+          this component is mounted
+      */}
+      {/* there is also the case that you un-like every like currently on the page - the cards
+          will not be dismissed - in this case, do not display "no likes" message
+      */}
+      {storedLikes.length === 0 && nasaImages.length === 0 && (
+        <p>
+          You don't have any likes. Check out some images by clicking above!
+        </p>
+      )}
+      {/* otherwise, display user likes using localStorage values */}
       {nasaImages.length > 0 && (
         <CardList
           imgDataList={nasaImages}
