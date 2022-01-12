@@ -24,7 +24,7 @@ const LikesContainer: React.FC = () => {
     // not strictly necessary to prevent fetch call if no storedLikes because network request is not made
     // when calling Promise.allSettled with an empty array
     try {
-      let data = await Promise.allSettled<ImageData>(
+      const data = await Promise.allSettled<ImageData>(
         storedLikes.map((imgDate) => {
           return fetch(
             `https://api.nasa.gov/planetary/apod?api_key=${nasaKey}&date=${imgDate}`
