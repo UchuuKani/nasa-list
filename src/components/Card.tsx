@@ -49,6 +49,12 @@ const Card: React.FC<CardProps> = ({
       {/* "Details" element to have the option to see image's explanation */}
       <details className="expando-container">
         <summary>Details</summary>
+        {/* display copyright info if available */}
+        {imgData.copyright && (
+          <p className="copyright">
+            Copyright: <br /> {imgData.copyright}
+          </p>
+        )}
         <p>{imgData.explanation}</p>
       </details>
       {/* like button using font awesome */}
