@@ -162,6 +162,8 @@ li {
 
   & summary {
     font-weight: bold;
+    max-width: fit-content;
+    cursor: pointer;
 
     /*
     // by setting "list-style: none", would like to try to remove default summary triangle to be able to 1.) add a custom element before 2.) animate the new custom element
