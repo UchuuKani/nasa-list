@@ -104,6 +104,10 @@ header {
   p {
     padding: 4px 8px;
   }
+
+  & h2 {
+    border-top: 1px solid grey;
+  }
 }
 
 ul {
@@ -138,17 +142,18 @@ li {
     flex-direction: row;
   }
 
-  & .view-btn {
+  & .nav-link-btn {
     display: block;
     padding: 8px;
-    margin: 8px;
+    margin-top: 8px;
     min-width: fit-content;
+    width: 100%;
     border-radius: 4px;
-    cursor: pointer;
     background: $button-blue;
     color: white;
     font-weight: bold;
     border: none;
+    text-align: center;
   }
 }
 
@@ -185,6 +190,10 @@ li {
     margin: 8px auto;
     padding: 8px 32px;
   }
+}
+
+ul .card-list-item {
+  background-color: white;
 }
 
 .expando-container {
