@@ -59,7 +59,7 @@ const ListContainer: React.FC = () => {
   }, []);
 
   return (
-    <div>
+    <>
       {/* if there is an error loading images, do not display list
         do display button to attempt to refetch */}
       {fetchError && (
@@ -83,7 +83,7 @@ const ListContainer: React.FC = () => {
           should not need to check that nasaImages.length === 0   
       */}
       {isLoading && <LoadingSpinner />}
-    </div>
+    </>
   );
 };
 

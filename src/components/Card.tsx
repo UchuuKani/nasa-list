@@ -53,7 +53,7 @@ const Card: React.FC<CardProps> = ({
             Copyright: <br /> {imgData.copyright}
           </p>
         )}
-        <p>{imgData.explanation}</p>
+        <p className="explanation">{imgData.explanation}</p>
       </details>
       {/* like button using font awesome */}
       <button

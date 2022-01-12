@@ -1,42 +1,14 @@
 import type { NextPage } from "next";
-import Head from "next/head";
-import styles from "../styles/Home.module.scss";
-import { useState } from "react";
-import { DisplayList } from "../src/utils/types";
 
 // components
 import ListContainer from "../src/components/ListContainer";
-import LikesContainer from "../src/components/LikesContainer";
-import ViewButtonsContainer from "../src/components/ViewButtonsContainer";
+import NavButtonsContainer from "../src/components/NavButtonsContainer";
 
 const App: NextPage = () => {
-  const [listView, setListView] = useState<DisplayList>("NONE");
-
-  const setLikesView = () => {
-    setListView("LIKES");
-  };
-
-  const setRandomView = () => {
-    setListView("RANDOM");
-  };
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Nasa List</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <header>
-        <h1>Discover the cosmos!</h1>
-      </header>
-      <main className={styles.main}>
-        <ViewButtonsContainer
-          viewStatus={listView}
-          likesSetter={setLikesView}
-          randomSetter={setRandomView}
-        />
-        {listView === "LIKES" && <LikesContainer />}
-        {listView === "RANDOM" && <ListContainer />}
-      </main>
+    <div>
+      <NavButtonsContainer linkText="See Likes" path="/likes" />
+      <ListContainer />
     </div>
   );
 };

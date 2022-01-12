@@ -23,7 +23,7 @@ const CardList: React.FC<CardListProps> = ({
         // prefer to pass in the like status for each card, rather than the whole store of likes and determining in the Card if the image is Liked
         // so pass in some prop like "likeStatus"
         return (
-          <li key={imgData.date}>
+          <li key={imgData.date} className="card-list-item">
             <Card
               imgData={imgData}
               isLiked={likedImages.includes(imgData.date)}

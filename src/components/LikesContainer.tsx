@@ -3,7 +3,6 @@ import CardList from "./CardList";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { ImageData } from "../utils/types";
 import { nasaKey, mapFailedResponseToDate } from "../utils/helpers";
-
 import LoadingSpinner from "./LoadingSpinner";
 
 const LikesContainer: React.FC = () => {
@@ -79,7 +78,7 @@ const LikesContainer: React.FC = () => {
   }, []);
 
   return (
-    <div>
+    <>
       {/* display which liked images could not be loaded */}
       {failedDates.length > 0 && (
         <p className="failed-dates-container">
@@ -97,7 +96,7 @@ const LikesContainer: React.FC = () => {
       {/* there is also the case that you un-like every like currently on the page - the cards
           will not be dismissed - in this case, do not display "no likes" message
       */}
-      {storedLikes.length === 0 && nasaImages.length === 0 && (
+      {storedLikes?.length === 0 && nasaImages.length === 0 && (
         <p>
           You don't have any likes. Check out some images by clicking above!
         </p>
@@ -116,7 +115,7 @@ const LikesContainer: React.FC = () => {
           should not need to check that nasaImages.length === 0
       */}
       {isLoading && <LoadingSpinner />}
-    </div>
+    </>
   );
 };
 
