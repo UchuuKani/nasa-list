@@ -34,11 +34,17 @@ const Card: React.FC<CardProps> = ({
         {imgData.url && imgData.media_type === "video" && (
           <embed src={imgData.url} style={{ width: "100%", height: "100%" }} />
         )}
-        {/* possbile to not have a url returned at all, display a placeholder or message saying no image available */}
+        {/* possbile to not have a url returned at all, display a placeholder or message saying no image available - using a free stock photo */}
         {!imgData.url && (
-          <div style={{ width: "100%", height: "100%" }}>
-            No image available
-          </div>
+          <img
+            src={
+              "https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg"
+            }
+            alt=""
+            style={{
+              width: "100%",
+            }}
+          />
         )}
       </div>
       <h2>{imgData.title || `A nice space ${imgData.media_type}`}</h2>
