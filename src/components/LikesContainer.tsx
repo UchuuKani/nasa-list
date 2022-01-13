@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
+
 import CardList from "./CardList";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { ImageData } from "../utils/types";
