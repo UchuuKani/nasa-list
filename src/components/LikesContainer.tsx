@@ -79,12 +79,25 @@ const LikesContainer: React.FC = () => {
     <>
       {/* display which liked images could not be loaded */}
       {failedDates.length > 0 && (
-        <p className="failed-dates-container">
-          Failed to fetch images for dates {failedDates.join()}
+        <div className="failed-dates-container">
           <button className="retry-btn" onClick={fetchNasaLikes}>
             Try again
           </button>
-        </p>
+          Failed to fetch images for dates:
+          <ul>
+            {failedDates?.map((date) => {
+              return (
+                <li key={date}>
+                  <FontAwesomeIcon
+                    icon={faStar}
+                    style={{ marginRight: 8, color: "rgb(255, 205, 60)" }}
+                  />
+                  {date}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       )}
       {/* if no likes, indicate as such - prefer checking for presence of storedLikes instead of nasaLikes
           because nasaLikes will be empty and isLoading will be false on first render (nasaLikes could potentially be set to a non-empty array later)

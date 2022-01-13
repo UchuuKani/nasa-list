@@ -85,7 +85,7 @@ header {
   }
 
   .home-icon-sm {
-  @media screen and (min-width: $tablet) {
+    @media screen and (min-width: $tablet) {
       display: none;
     }
   }
@@ -153,8 +153,18 @@ li {
 }
 
 .failed-dates-container {
+  margin-top: 24px;
+  margin-bottom: 16px;
   max-width: 100%;
-  background: lightblue;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  @media screen and (min-width: $mobile) {
+    font-size: 1.25rem;
+  }
 }
 
 .view-btn-container {
@@ -212,6 +222,7 @@ li {
   color: white;
   font-weight: bold;
   border: none;
+  margin-bottom: 16px;
 
   @media screen and (min-width: $mobile) {
     max-width: fit-content;
