@@ -7,7 +7,12 @@ const NavButton: React.FC<{ linkText: string; path: string }> = ({
 }) => {
   return (
     <Link href={path}>
-      <a className="nav-link-btn">{linkText}</a>
+      <a
+        className="nav-link-btn"
+        id={path === "/" ? "return-to-feed" : undefined}
+      >
+        {linkText}
+      </a>
     </Link>
   );
 };
@@ -17,20 +22,13 @@ NavButton.propTypes = {
   path: PropTypes.string.isRequired,
 };
 
-const ViewButtonsContainer: React.FC<{
-  linkText: string;
-  path: string;
-}> = ({ linkText, path }) => {
+const NavButtonsContainer: React.FC = () => {
   return (
     <div className="view-btn-container">
-      <NavButton linkText={linkText} path={path} />
+      <NavButton linkText="Feed" path="/" />
+      <NavButton linkText="Likes" path="/likes" />
     </div>
   );
 };
 
-ViewButtonsContainer.propTypes = {
-  linkText: PropTypes.string.isRequired,
-  path: PropTypes.string.isRequired,
-};
-
-export default ViewButtonsContainer;
+export default NavButtonsContainer;

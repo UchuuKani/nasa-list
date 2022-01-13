@@ -68,20 +68,25 @@ h6 {
 */
 
 header {
-  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   padding: 16px;
   color: white;
   background: $button-blue;
   border: 8px solid $nasa-red;
 
   h1 {
-    font-size: 24px;
+    display: none;
+
+    @media screen and (min-width: $tablet) {
+      display: block;
+    }
   }
 
+  .home-icon-sm {
   @media screen and (min-width: $tablet) {
-    // font-size: 32px;
-    h1 {
-      font-size: 32px;
+      display: none;
     }
   }
 }
@@ -129,29 +134,30 @@ li {
 }
 
 .view-btn-container {
-  background-color: lightblue;
   display: flex;
-  flex-direction: column;
-  width: 100%;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: flex-end;
   align-items: center;
-
-  @media screen and (min-width: $tablet) {
-    flex-direction: row;
-  }
 
   & .nav-link-btn {
     display: block;
-    padding: 8px;
-    margin-top: 8px;
+    padding: 4px 8px;
+    margin: 0px 4px;
     min-width: fit-content;
-    width: 100%;
-    border-radius: 4px;
-    background: $button-blue;
     color: white;
+    font-size: 1.25rem;
     font-weight: bold;
     border: none;
     text-align: center;
+
+    @media screen and (min-width: $tablet) {
+      margin: 0px 24px;
+      font-size: 24px;
+    }
+
+    @media screen and (min-width: $desktop) {
+      margin: 0px 32px;
+    }
   }
 }
 

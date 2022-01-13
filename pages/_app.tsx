@@ -1,6 +1,7 @@
 import "../styles/globals.scss";
 import type { AppProps } from "next/app";
 import { config } from "@fortawesome/fontawesome-svg-core";
+import Header from "../src/components/Header";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 config.autoAddCss = false;
 
@@ -14,9 +15,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <title>Nasa List</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <header>
-        <h1>Discover the cosmos!</h1>
-      </header>
+      <Header />
       <main className={styles.main}>
         <Component {...pageProps} />
       </main>
