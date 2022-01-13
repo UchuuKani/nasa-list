@@ -52,12 +52,6 @@ const LikesContainer: React.FC = () => {
           return false;
         });
       const failedFetchDates = mapFailedResponseToDate(storedLikes, data);
-      console.log("we have data houston", data);
-      console.log("and also mappedData", mappedData);
-      console.log(
-        "also have mapping to dates which failed to fetch",
-        failedDates
-      );
 
       if (failedFetchDates.length > 0) {
         setFailedDates(failedFetchDates);
@@ -97,8 +91,19 @@ const LikesContainer: React.FC = () => {
           will not be dismissed - in this case, do not display "no likes" message
       */}
       {storedLikes?.length === 0 && nasaImages.length === 0 && (
-        <p>
-          You don't have any likes. Check out some images by clicking above!
+        <p className="no-likes-container">
+          You don't have any likes. Check out some images by going to{" "}
+          <FontAwesomeIcon
+            aria-hidden={true}
+            icon={faStar}
+            style={{ color: "rgb(255, 205, 60)" }}
+          />
+          <Link href="/">your feed!</Link>
+          <FontAwesomeIcon
+            aria-hidden={true}
+            icon={faStar}
+            style={{ color: "rgb(255, 205, 60)" }}
+          />
         </p>
       )}
       {/* otherwise, display user likes using localStorage values */}

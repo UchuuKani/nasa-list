@@ -111,6 +111,10 @@ header {
   & h2 {
     border-top: 1px solid grey;
   }
+
+  & > p {
+    font-weight: bold;
+  }
 }
 
 ul {
@@ -126,6 +130,26 @@ li {
   background-color: white;
   border: none;
   cursor: pointer;
+}
+
+.no-likes-container {
+  font-size: 1rem;
+  font-weight: bold;
+  width: 60%;
+  margin: 24px auto;
+
+  & a {
+    margin: 0 2px;
+  }
+
+  @media screen and (min-width: $tablet) {
+    font-size: 1.25rem;
+    width: 75%;
+  }
+
+  @media screen and (min-width: $desktop) {
+    font-size: 1.5rem;
+  }
 }
 
 .failed-dates-container {
