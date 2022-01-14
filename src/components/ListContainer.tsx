@@ -63,7 +63,7 @@ const ListContainer: React.FC = () => {
       {/* if there is an error loading images, do not display list
         do display button to attempt to refetch */}
       {fetchError && (
-        <figure>
+        <figure className="fetch-error-container">
           {fetchError}
           <button className="retry-btn" onClick={fetchNasa}>
             Try again

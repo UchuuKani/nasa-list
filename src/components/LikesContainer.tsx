@@ -79,7 +79,7 @@ const LikesContainer: React.FC = () => {
     <>
       {/* display which liked images could not be loaded */}
       {failedDates.length > 0 && (
-        <div className="failed-dates-container">
+        <div className="fetch-error-container">
           <button className="retry-btn" onClick={fetchNasaLikes}>
             Try again
           </button>
