@@ -67,6 +67,8 @@ h6 {
   application styles
 */
 
+/* START - nav content */
+
 header {
   display: flex;
   flex-direction: row;
@@ -91,11 +93,44 @@ header {
   }
 }
 
+.view-btn-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+
+  & .nav-link-btn {
+    display: block;
+    padding: 4px 8px;
+    margin: 0px 4px;
+    min-width: fit-content;
+    color: white;
+    font-size: 1.25rem;
+    font-weight: bold;
+    border: none;
+    text-align: center;
+
+    @media screen and (min-width: $tablet) {
+      margin: 0px 24px;
+      font-size: 24px;
+    }
+
+    @media screen and (min-width: $desktop) {
+      margin: 0px 32px;
+    }
+  }
+}
+
+/* END - nav content */
+
+/* START - card styles */
 .img-card {
   border: solid 1px grey;
   margin-top: 16px;
   margin-bottom: 16px;
   width: 250px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 
   @media screen and (min-width: $mobile) {
     width: 350px;
@@ -124,6 +159,47 @@ li {
   list-style: none;
 }
 
+ul .card-list-item {
+  background-color: white;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.expando-container {
+  padding-left: 8px;
+  padding-right: 8px;
+
+  & summary {
+    font-weight: bold;
+    max-width: fit-content;
+    cursor: pointer;
+
+    /*
+    // by setting "list-style: none", would like to try to remove default summary triangle to be able to 1.) add a custom element before 2.) animate the new custom element
+    list-style: none;
+
+    // later, would like to add custom ::before element here, and animate it
+    &::before {
+      content: ">";
+      font: normal normal normal 14px/1 FontAwesome;
+    }
+    */
+  }
+
+  & .explanation {
+    font-size: 1rem;
+    max-height: 400px;
+    overflow-y: auto;
+    background-color: $background-grey;
+    border-radius: 2px;
+  }
+
+  & .copyright {
+    font-size: 0.75rem;
+    font-weight: bold;
+  }
+}
+
 .like-btn {
   padding: 8px 8px;
   border-radius: 50%;
@@ -131,6 +207,8 @@ li {
   border: none;
   cursor: pointer;
 }
+
+/* END - card styles */
 
 .no-likes-container {
   font-size: 1rem;
@@ -167,52 +245,6 @@ li {
   }
 }
 
-.view-btn-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-
-  & .nav-link-btn {
-    display: block;
-    padding: 4px 8px;
-    margin: 0px 4px;
-    min-width: fit-content;
-    color: white;
-    font-size: 1.25rem;
-    font-weight: bold;
-    border: none;
-    text-align: center;
-
-    @media screen and (min-width: $tablet) {
-      margin: 0px 24px;
-      font-size: 24px;
-    }
-
-    @media screen and (min-width: $desktop) {
-      margin: 0px 32px;
-    }
-  }
-}
-
-.loading-spinner-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  width: 100%;
-
-  // only display the third spinner for screens larger than 800px
-  @media screen and (max-width: $tablet) {
-    .extra-spinner {
-      display: none;
-    }
-  }
-}
-
 .retry-btn {
   display: block;
   width: 100%;
@@ -230,44 +262,20 @@ li {
     padding: 8px 32px;
   }
 }
+.loading-spinner-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
 
-ul .card-list-item {
-  background-color: white;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-}
-
-.expando-container {
-  padding-left: 8px;
-  padding-right: 8px;
-
-  & summary {
-    font-weight: bold;
-    max-width: fit-content;
-    cursor: pointer;
-
-    /*
-    // by setting "list-style: none", would like to try to remove default summary triangle to be able to 1.) add a custom element before 2.) animate the new custom element
-    list-style: none;
-
-    // later, would like to add custom ::before element here, and animate it
-    &::before {
-      content: ">";
-      font: normal normal normal 14px/1 FontAwesome;
+  // only display the third spinner for screens larger than 800px
+  @media screen and (max-width: $tablet) {
+    .extra-spinner {
+      display: none;
     }
-    */
-  }
-
-  & .explanation {
-    font-size: 1rem;
-    max-height: 400px;
-    overflow-y: auto;
-    background-color: $background-grey;
-    border-radius: 2px;
-  }
-
-  & .copyright {
-    font-size: 0.75rem;
-    font-weight: bold;
   }
 }
