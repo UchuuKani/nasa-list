@@ -10,7 +10,7 @@ import styles from "../styles/Home.module.scss";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>Nasa List</title>
         <link rel="icon" href="/favicon.ico" />
