@@ -41,7 +41,6 @@ const ListContainer: React.FC = () => {
           setIsLoading(false);
         });
 
-      console.log("we have data houston", data);
       // want to support this later to show that localStorage store works without adding the date range picker functionality
       // if we fetch from api and only provide key, latest image is fetched. The latest image object has the same shape
       // as an individual element of the array returned by api call if we supplied it a "count" parameter
