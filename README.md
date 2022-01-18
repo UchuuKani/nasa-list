@@ -1,16 +1,32 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# README
 
-## Getting Started
+For this project, beyond the base functionality requested in the prompt, `functional and adaptable to different types of conditions. To this end, in addition to the base functionality that was asked for,` I chose to add a loading state while data fetching occurs, as well as a way to persist likes in the case of a page refresh or navigation. I tried to be mindful of the states the app could be in as a result of failed api requests as well.
 
-First, run the development server:
+I created a `Next.js` project using`create-next-app` to quickly stand up a React application, as well as for ease of deployment, and for styling used `sass` and `font-awesome` for some icons and basic animations. State management is handled by basic React hooks, with a custom hook for saving to `localStorage`.
 
-```bash
-npm run dev
-# or
-yarn dev
+## General Approach Starting Out
+
+### API Testing
+
+To determine the type of response that would be received in case of an error, I misspelled the `api_key` portion of the url. If it's safe to assume that responses have a consistent shape, and that errors will not be given a 200 status code, it is probably ok to check `response.ok` after fetching to determine if the response was successful, or if it errored.
+
+Example failed response below:
+
+```json
+{
+  "error": {
+    "code": "API_KEY_MISSING",
+    "message": "No api_key was supplied. Get one at https://api.nasa.gov:443"
+  }
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+I also tested api calls using invalid dates, as well as invalid query params and verified that non-200 responses were being returned for errors.
+
+After testing the `APOD` api out some more, I also saw that a third value for the `media_type` field could be returned - `other`. This data (from what I was able to test) did not have an associated `url` or `hdurl`, so in these cases I render a placeholder image. The fact that the url, which I assumed would be unique for each data item returned, could be missing from the response also guided my decision to use the `date` as a unique key when implementing saved likes.
+
+An example of one such response is: `https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=2012-05-23`
+
 
 You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
