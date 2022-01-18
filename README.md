@@ -1,8 +1,8 @@
 # README
 
-For this project, beyond the base functionality requested in the prompt, `functional and adaptable to different types of conditions. To this end, in addition to the base functionality that was asked for,` I chose to add a loading state while data fetching occurs, as well as a way to persist likes in the case of a page refresh or navigation. I tried to be mindful of the states the app could be in as a result of failed api requests as well.
+For this project, beyond the base functionality requested in the prompt, I chose to add a loading state while data fetching occurs, as well as a way to persist likes in the case of a page refresh or navigation. I tried to be mindful of the states the app could be in as a result of failed api requests as well.
 
-I created a `Next.js` project using`create-next-app` to quickly stand up a React application, as well as for ease of deployment, and for styling used `sass` and `font-awesome` for some icons and basic animations. State management is handled by basic React hooks, with a custom hook for saving to `localStorage`.
+I created a `Next.js` project using `create-next-app` to quickly stand up a React application, as well as for ease of deployment, and for styling used `sass` and `font-awesome` for some icons and basic animations. State management is handled by basic React hooks, with a custom hook for saving to `localStorage`.
 
 ## General Approach Starting Out
 
