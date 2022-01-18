@@ -27,10 +27,11 @@ After testing the `APOD` api out some more, I also saw that a third value for th
 
 An example of one such response is: `https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=2012-05-23`
 
+There are also responses with a `media_type` of `video` where the url points to an html file, and with these I encountered CORS errors while trying to render them. These types of responses are not handled.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+An example of this response is: `https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=2018-03-05`, which has a `url` of `https://apod.nasa.gov/apod/image/1803/AstroSoM/hudf.html`
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+---
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
