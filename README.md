@@ -4,6 +4,8 @@ For this project, beyond the base functionality requested in the prompt, I chose
 
 I created a `Next.js` project using `create-next-app` to quickly stand up a React application, as well as for ease of deployment, and for styling used `sass` and `font-awesome` for some icons and basic animations. State management is handled by basic React hooks, with a custom hook for saving to `localStorage`.
 
+The live application is deployed [here](https://nasa-list.vercel.app/) using `Vercel`'s hosting platform.
+
 ---
 
 ## Features
@@ -11,6 +13,7 @@ I created a `Next.js` project using `create-next-app` to quickly stand up a Reac
 The user may:
 
 - Load ten random images
+  - Can load another 10 random images
 - Like images
 - View liked images (saved to `localStorage`)
 - Refetch images in case of api failure
