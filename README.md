@@ -54,7 +54,9 @@ A more scalable approach might be to save the whole response in `localStorage` t
 
 ---
 
-## Learn More
+## Adding a Loading State
+
+The other extra feature I added was a loading state so that an animation could play while data is being fetched from the api using an `isLoading` boolean state variable. Whenever data fetching occurs, the app is in a loading state during which a spinner is displayed, and after which it can either enter a success (data returned by api) state, or error state (api call errored out in `/` page). On the `Likes` page, the loading state still exists, but since all api calls are separate some may succeed and some may fail leading to a more ambiguous state than just success or failure.
 
 ---
 
