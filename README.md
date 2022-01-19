@@ -46,7 +46,7 @@ There are also responses with a `media_type` of `video` where the url points to 
 
 ## Saving Likes
 
-Every time an image is liked, I store the `date` attribute in an array in `localStorage` to be fetched at a later time. When fetching likes, a request for each date is made in parallel with others, and any data that fails to fetch is listed out. In order to consistently see likes (as otherwise random images are fetched on the `/feed` route), I added a `/likes` route that can be visited.
+Every time an image is liked, I store the `date` attribute in an array in `localStorage` to be fetched at a later time. When fetching likes, a request for each date is made in parallel with others, and any data that fails to fetch is listed out. In order to view likes (as otherwise random images are fetched on the main page), I added a `/likes` page that can be visited for ease of testing the `localStorage` functionality. While on this page, I decided against removing the image from list being displayed in case the user changes their mind (mainly because I did not implement a way to find a specific image on the main page).
 
 The two main decisions I had in mind here were: 1.) the data that gets saved in `localStorage` and 2.) the data structure the data is stored in. Regarding the former, I chose to only save the date, rather than the entire response in order to have the most up to date url whenever fetching occurs - I don't know how often the url might update, or other data such as copyright info or the explanation.
 
