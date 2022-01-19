@@ -74,17 +74,16 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ---
 
-## Error Testing
+## Running the Project
 
-To determine the type of response that would be received in case of an error, I misspelled the `api_key` portion of the url. If it's safe to assume that responses have a consistent shape, and that errors will not be given a 200 status code, it is probably ok to check `response.ok` to determine if the response was successful, or if it errored.
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-Example failed response below:
+First, run the development server:
 
-```json
-{
-  "error": {
-    "code": "API_KEY_MISSING",
-    "message": "No api_key was supplied. Get one at https://api.nasa.gov:443"
-  }
-}
+```bash
+npm run dev
+# or
+yarn dev
 ```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
