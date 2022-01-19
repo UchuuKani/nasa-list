@@ -56,10 +56,13 @@ A more scalable approach might be to save the whole response in `localStorage` t
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Accessibility
+
+When applicable, I tried to use semantic html elements rather than a generic container like a `div`. Other accessibility measures include adding alt text to images when appropriate, adding an `aria-label` to icon buttons, and checking for acceptable color contrast using the [Wave Evaluation Tool](https://wave.webaim.org/)
+
+---
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
