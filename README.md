@@ -36,11 +36,11 @@ I also tested api calls using invalid dates, as well as invalid query params and
 
 After testing the `APOD` api out some more, I also saw that a third value for the `media_type` field could be returned - `other`. This data (from what I was able to test) did not have an associated `url` or `hdurl`, so in these cases I render a placeholder image. The fact that the url, which I assumed would be unique for each data item returned, could be missing from the response also guided my decision to use the `date` as a unique key when implementing saved likes.
 
-An example of one such response is: `https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=2012-05-23`
+- An example of one such response is: `https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=2012-05-23`
 
 There are also responses with a `media_type` of `video` where the url points to an html file, and with these I encountered CORS errors while trying to render them. These types of responses are not handled.
 
-An example of this response is: `https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=2018-03-05`, which has a `url` of `https://apod.nasa.gov/apod/image/1803/AstroSoM/hudf.html`
+- An example of this response is: `https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=2018-03-05`, which has a `url` of `https://apod.nasa.gov/apod/image/1803/AstroSoM/hudf.html`
 
 ---
 
