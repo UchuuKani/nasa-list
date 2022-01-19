@@ -44,7 +44,15 @@ An example of this response is: `https://api.nasa.gov/planetary/apod?api_key=DEM
 
 ---
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Saving Likes
+
+Every time an image is liked, I store the `date` attribute in an array in `localStorage` to be fetched at a later time. When fetching likes, a request for each date is made in parallel with others, and any data that fails to fetch is listed out. In order to consistently see likes (as otherwise random images are fetched on the `/feed` route), I added a `/likes` route that can be visited.
+
+The two main decisions I had in mind here were: 1.) the data that gets saved in `localStorage` and 2.) the data structure the data is stored in. Regarding the former, I chose to only save the date, rather than the entire response in order to have the most up to date url whenever fetching occurs - I don't know how often the url might update, or other data such as copyright info or the explanation.
+
+A more scalable approach might be to save the whole response in `localStorage` to avoid unneeded api calls, along with some timestamp indicating when the data was last fetched, and then periodically re-fetching the data whenever the data is deemed to be "stale" (maybe after a month? Two months?).
+
+---
 
 ## Learn More
 
