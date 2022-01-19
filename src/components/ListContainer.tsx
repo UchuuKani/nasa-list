@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import CardList from "./CardList";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { ImageData } from "../utils/types";
@@ -19,7 +19,7 @@ const ListContainer: React.FC = () => {
   // can set state for loading, and error states - would maybe want to avoid if possible since don't want to work with tons of booleans
   // to derive state, and maybe opt to use a state machine like XState. For simple use case, opting to just use useState to handle
 
-  const fetchNasa = async () => {
+  const fetchNasa = useCallback(async () => {
     setFetchError("");
     setIsLoading(true);
     try {
@@ -51,11 +51,11 @@ const ListContainer: React.FC = () => {
       // going to use a hard coded error message
       setFetchError("There was an error while loading space stuff");
     }
-  };
+  }, []);
 
   useEffect(() => {
     fetchNasa();
-  }, []);
+  }, [fetchNasa]);
 
   return (
     <>
@@ -69,13 +69,24 @@ const ListContainer: React.FC = () => {
           </button>
         </figure>
       )}
-      {!fetchError && nasaImages.length > 0 && (
-        <CardList
-          imgDataList={nasaImages}
-          likeImage={addToLikeList}
-          removeLike={removeFromLikeList}
-          likedImages={storedLikes}
-        />
+      {/* if there is no fetch error, we have image data, and not loading, then render cards */}
+      {!fetchError && nasaImages.length > 0 && !isLoading && (
+        <>
+          <button
+            className="retry-btn"
+            onClick={() => {
+              fetchNasa();
+            }}
+          >
+            Fetch again
+          </button>
+          <CardList
+            imgDataList={nasaImages}
+            likeImage={addToLikeList}
+            removeLike={removeFromLikeList}
+            likedImages={storedLikes}
+          />
+        </>
       )}
       {/* display loading screen if data has not returned, and if there is no error - can 
           be sure that isLoading is false after fetch completes due to .finally block -
